@@ -1,0 +1,13 @@
+# arangodb.service
+
+[Unit]
+Description=ArangoDB Database
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=root
+ExecStart=/usr/sbin/arangod --pidfile /var/run/arangod.pid --make-pidfile --user arangodb --background
+
+[Install]
+WantedBy=multi-user.target

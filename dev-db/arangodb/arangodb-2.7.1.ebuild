@@ -20,26 +20,28 @@ KEYWORDS="amd64"
 IUSE=""
 
 DEPEND=">=sys-libs/readline-6.2_p1
-		>=dev-libs/openssl-1.0.1g
-		>=dev-lang/go-1.2"
+    >=dev-libs/openssl-1.0.1g
+    >=dev-lang/go-1.2"
 RDEPEND="${DEPEND}"
 
 
 pkg_setup() {
-	ebegin "Creating arangodb user and group"
-	enewgroup arangodb
-	enewuser arangodb -1 -1 -1 arangodb
-	eend $?
+  ebegin "Creating arangodb user and group"
+  enewgroup arangodb
+  enewuser arangodb -1 -1 -1 arangodb
+  eend $?
 }
 
 src_configure() {
-	econf --localstatedir="${EPREFIX}"/var --enable-all-in-one-v8 --enable-all-in-one-libev --enable-all-in-one-icu || die "configure failed"
+  econf --localstatedir="${EPREFIX}"/var --enable-all-in-one-v8 --enable-all-in-one-libev --enable-all-in-one-icu || die "configure failed"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+  emake DESTDIR="${D}" install
 
-	newinitd "${FILESDIR}"/arangodb.initd arangodb
+  newinitd "${FILESDIR}"/arangodb.initd arangodb
 
-	fowners arangodb:arangodb /var/lib/arangodb /var/lib/arangodb-apps /var/log/arangodb
+  fowners arangodb:arangodb /var/lib/arangodb /var/lib/arangodb-apps /var/log/arangodb
+
+  systemd_dounit "${FILESDIR}"/arangodb.service
 }
