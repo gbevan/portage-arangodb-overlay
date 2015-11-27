@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repositories version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name>gbevan-arangodb></name>
+    <description lang="en">Arangodb</description>
+    <homepage>http://github.com/gbevan/portage-arangogb-overlay</homepage>
+    <owner type="person">
+      <email>graham.bevan@ntlworld.com</email>
+      <name>Graham Bevan></name>
+    </owner>
+    <source type="git">git://github.com/gbevan/portage-arangodb-overlay.git</source>
+    <feed>https://github.com/gbevan/portage-arangodb-overlay/commits/master.atom</feed>
+  </repo>
+</repositories>
