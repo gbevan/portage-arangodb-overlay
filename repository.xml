@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <repositories version="1.0">
   <repo quality="experimental" status="unofficial">
-    <name>gbevan-arangodb></name>
+    <name>gbevan-arangodb</name>
     <description lang="en">Arangodb</description>
     <homepage>http://github.com/gbevan/portage-arangogb-overlay</homepage>
     <owner type="person">
