@@ -6,9 +6,11 @@ Description=ArangoDB Database
 [Service]
 Type=oneshot
 #RemainAfterExit=yes
-PIDFile=/var/run/arangod.pid
+PIDFile=/var/run/arangod/arangod.pid
 User=root
-ExecStart=/usr/sbin/arangod --pid-file /var/run/arangod.pid --server.uid arangodb --daemon
+ExecStartPre=-mkdir -p /var/run/arangod
+ExecStartPre=-chown arangod:arangod /var/run/arangod
+ExecStart=/usr/sbin/arangod --pid-file /var/run/arangod/arangod.pid --server.uid arangodb --daemon
 ExecStop=/bin/kill -2 $MAINPID
 
 [Install]
