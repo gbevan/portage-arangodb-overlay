@@ -8,8 +8,8 @@ Type=oneshot
 #RemainAfterExit=yes
 PIDFile=/var/run/arangod/arangod.pid
 User=root
-ExecStartPre=-mkdir -p /var/run/arangod
-ExecStartPre=-chown arangod:arangod /var/run/arangod
+ExecStartPre=/bin/mkdir -p /var/run/arangod
+ExecStartPre=/bin/chown arangod:arangod /var/run/arangod
 ExecStart=/usr/sbin/arangod --pid-file /var/run/arangod/arangod.pid --server.uid arangodb --daemon
 ExecStop=/bin/kill -2 $MAINPID
 
