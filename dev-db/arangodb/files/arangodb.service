@@ -4,7 +4,7 @@
 Description=ArangoDB Database
 
 [Service]
-Type=forking
+Type=oneshot
 #RemainAfterExit=yes
 PIDFile=/var/run/arangod.pid
 User=root
