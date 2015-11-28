@@ -9,7 +9,7 @@ Type=oneshot
 PIDFile=/var/run/arangod/arangod.pid
 User=root
 ExecStartPre=/bin/mkdir -p /var/run/arangod
-ExecStartPre=/bin/chown arangod:arangod /var/run/arangod
+ExecStartPre=/bin/chown arangodb:arangodb /var/run/arangod
 ExecStart=/usr/sbin/arangod --pid-file /var/run/arangod/arangod.pid --server.uid arangodb --daemon
 ExecStop=/bin/kill -2 $MAINPID
 
