@@ -8,8 +8,8 @@ Type=oneshot
 #RemainAfterExit=yes
 PIDFile=/var/run/arangod.pid
 User=root
-ExecStart=/usr/sbin/arangod --pid-file $MAINPID --server.uid arangodb --daemon
-ExecStop=/bin/kill -2 `pidof /usr/sbin/arangod`
+ExecStart=/usr/sbin/arangod --pid-file /var/run/arangod.pid --server.uid arangodb --daemon
+ExecStop=/bin/kill -2 $MAINPID
 
 [Install]
 WantedBy=multi-user.target
