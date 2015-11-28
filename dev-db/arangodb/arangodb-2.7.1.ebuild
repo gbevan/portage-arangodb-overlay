@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils user vcs-snapshot
+inherit eutils user vcs-snapshot systemd
 
 DESCRIPTION="the multi-purpose NoSQL DB"
 HOMEPAGE="http://www.arangodb.org/"
