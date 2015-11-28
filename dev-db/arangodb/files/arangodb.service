@@ -4,10 +4,12 @@
 Description=ArangoDB Database
 
 [Service]
-Type=oneshot
-RemainAfterExit=yes
+Type=forking
+#RemainAfterExit=yes
+PIDFile=/var/run/arangod.pid
 User=root
-ExecStart=/usr/sbin/arangod --pidfile /var/run/arangod.pid --make-pidfile --user arangodb --background
+ExecStart=/usr/sbin/arangod --pidfile $MAINPID --make-pidfile --user arangodb --background
+ExecStop=/bin/kill $MAINPID
 
 [Install]
 WantedBy=multi-user.target
