@@ -8,7 +8,7 @@ Type=forking
 #RemainAfterExit=yes
 PIDFile=/var/run/arangod.pid
 User=root
-ExecStart=/usr/sbin/arangod --pidfile $MAINPID --make-pidfile --user arangodb --background
+ExecStart=/usr/sbin/arangod --pid-file $MAINPID --make-pidfile --user arangodb --background
 ExecStop=/bin/kill $MAINPID
 
 [Install]
