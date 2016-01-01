@@ -4,6 +4,8 @@ portage-arangodb-overlay
 Gentoo Portage overlay for ArangoDB
 -----------------------------------
 
+[ArangoDB - the multi-model NoSQL database](https://www.arangodb.com/).
+
 /etc/layman/layman.cfg add:
 
     overlays: ...
