@@ -11,7 +11,10 @@ Gentoo Portage overlay for ArangoDB
     overlays: ...
               https://github.com/gbevan/portage-arangodb-overlay/raw/master/repository.xml
 
-layman -a gbevan-arangodb
+layman -f -a gbevan-arangodb
+
+emerge -v --ask arangodb
+
 
 Upgrading
 ---------
