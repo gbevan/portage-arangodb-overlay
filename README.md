@@ -24,7 +24,21 @@ Upgrading
 
 Ensure all active connections, from applications and arangosh etc, are shutdown/closed before restarting:
 
+    systemctl daemon-reload
     systemctl restart arangodb
+
+Check the logs:
+
+    journalctl -b -u arangodb
+
+If you get message like:
+
+    FATAL Database 'partout' needs upgrade. Please start the server with the --upgrade option
+
+then:
+
+    arangod --uid arangodb --gid arangodb --upgrade
+    (there may be an upgrade option via systemctl... maybe...)
 
 
 Developer Notes:
@@ -32,6 +46,6 @@ Developer Notes:
 
 * When releasing new ebuild, run:
 
-        ebuild arangodb-2.7.x.ebuild manifest
+        ebuild arangodb-2.8.x.ebuild manifest
 
   for your new ebuild version, then commit/push.
