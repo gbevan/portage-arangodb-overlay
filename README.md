@@ -11,10 +11,17 @@ Gentoo Portage overlay for ArangoDB
     overlays: ...
               https://github.com/gbevan/portage-arangodb-overlay/raw/master/repository.xml
 
-layman -f -a gbevan-arangodb
+run:
 
-emerge -v --ask arangodb
+    layman -f -a gbevan-arangodb
+    emerge -v --ask arangodb
 
+to start (systemd):
+
+    systemctl enable arangodb
+    systemctl start arangodb
+
+(pre-systemd init scripts are also provided - let me know if you have any issues/fixes)
 
 Upgrading
 ---------
