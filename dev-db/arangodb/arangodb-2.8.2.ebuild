@@ -3,8 +3,9 @@
 # $Header: $
 
 EAPI=5
+PYTHON_COMPAT=( python2_7 )
 
-inherit eutils user vcs-snapshot systemd
+inherit eutils user vcs-snapshot systemd python-any-r1
 
 DESCRIPTION="the multi-purpose NoSQL DB"
 HOMEPAGE="http://www.arangodb.org/"
@@ -21,11 +22,12 @@ IUSE=""
 
 DEPEND=">=sys-libs/readline-6.2_p1
     >=dev-libs/openssl-1.0.1g
-    >=dev-lang/go-1.2"
+    >=dev-lang/go-1.2
+    ${PYTHON_DEPEND}"
 RDEPEND="${DEPEND}"
 
-
 pkg_setup() {
+  python-any-r1_pkg_setup
   ebegin "Creating arangodb user and group"
   enewgroup arangodb
   enewuser arangodb -1 -1 -1 arangodb
