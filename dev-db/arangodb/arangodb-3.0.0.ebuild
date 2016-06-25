@@ -27,7 +27,6 @@ DEPEND=">=sys-libs/readline-6.2_p1
     ${PYTHON_DEPEND}"
 RDEPEND="${DEPEND}"
 
-S="${WORKDIR}/arangodb"
 BUILD_DIR="${WORKDIR}/arangodb/build"
 
 pkg_setup() {
