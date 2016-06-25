@@ -27,11 +27,11 @@ DEPEND=">=sys-libs/readline-6.2_p1
     ${PYTHON_DEPEND}"
 RDEPEND="${DEPEND}"
 
-BUILD_DIR="${WORKDIR}/arangodb/build"
+#BUILD_DIR="${WORKDIR}/arangodb/build"
 
 pkg_setup() {
   python-any-r1_pkg_setup
-  ebegin "Creating arangodb user and group"
+  ebegin "Ensuring arangodb user and group exist"
   enewgroup arangodb
   enewuser arangodb -1 -1 -1 arangodb
   eend $?
