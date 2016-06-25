@@ -3,11 +3,12 @@
 # $Header: $
 
 EAPI=5
+CMAKE_BUILD_TYPE=Release
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils user vcs-snapshot systemd python-any-r1
+inherit eutils user vcs-snapshot systemd python-any-r1 cmake-utils
 
-DESCRIPTION="the multi-purpose NoSQL DB"
+DESCRIPTION="The multi-purpose multi-model NoSQL DB"
 HOMEPAGE="http://www.arangodb.org/"
 
 GITHUB_USER="arangodb"
@@ -26,6 +27,9 @@ DEPEND=">=sys-libs/readline-6.2_p1
     ${PYTHON_DEPEND}"
 RDEPEND="${DEPEND}"
 
+S="${WORKDIR}/arangodb"
+BUILD_DIR="${WORKDIR}/arangodb/build"
+
 pkg_setup() {
   python-any-r1_pkg_setup
   ebegin "Creating arangodb user and group"
@@ -34,12 +38,24 @@ pkg_setup() {
   eend $?
 }
 
+src_prepare() {
+    #epatch here
+    cmake-utils_src_prepare
+}
+
 src_configure() {
-  econf --localstatedir="${EPREFIX}"/var --enable-all-in-one-v8 --enable-all-in-one-libev --enable-all-in-one-icu || die "configure failed"
+  #econf --localstatedir="${EPREFIX}"/var --enable-all-in-one-v8 --enable-all-in-one-libev --enable-all-in-one-icu || die "configure failed"
+
+  local mycmakeargs=(
+    -D USE_BOOST_SYSTEM_LIBS=on
+  )
+  cmake-utils_src_configure
 }
 
 src_install() {
-  emake DESTDIR="${D}" install
+  #emake DESTDIR="${D}" install
+
+  cmake-utils_src_install
 
   newinitd "${FILESDIR}"/arangodb.initd arangodb
 
