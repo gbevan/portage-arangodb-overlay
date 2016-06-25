@@ -46,24 +46,16 @@ src_configure() {
   #econf --localstatedir="${EPREFIX}"/var --enable-all-in-one-v8 --enable-all-in-one-libev --enable-all-in-one-icu || die "configure failed"
 
   local mycmakeargs=(
-    -DLOCALSTATEDIR=/var
-    -DUSE_BOOST_SYSTEM_LIBS=on
+    -D LOCALSTATEDIR=/var
+    -D USE_BOOST_SYSTEM_LIBS=on
   )
   cmake-utils_src_configure
 }
 
 src_install() {
-  #emake DESTDIR="${D}" install
-
-  #mkdir -p ${D}/var/lib/arangodb
-  #mkdir -p ${D}/var/lib/arangodb-apps
-  #mkdir -p ${D}/var/log/arangodb
-
   cmake-utils_src_install
 
   newinitd "${FILESDIR}"/arangodb.initd arangodb
-
-  #fowners arangodb:arangodb /var/lib/arangodb /var/lib/arangodb-apps /var/log/arangodb
 
   systemd_dounit "${FILESDIR}"/arangodb.service
 }
