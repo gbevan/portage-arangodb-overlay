@@ -55,6 +55,8 @@ src_install() {
   #emake DESTDIR="${D}" install
 
   mkdir -p ${D}/var/lib/arangodb
+  mkdir -p ${D}/var/lib/arangodb-apps
+  mkdir -p ${D}/var/log/arangodb
 
   cmake-utils_src_install
 
