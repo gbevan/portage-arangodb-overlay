@@ -54,6 +54,8 @@ src_configure() {
 src_install() {
   #emake DESTDIR="${D}" install
 
+  mkdir -p ${D}/var/lib/arangodb
+
   cmake-utils_src_install
 
   newinitd "${FILESDIR}"/arangodb.initd arangodb
