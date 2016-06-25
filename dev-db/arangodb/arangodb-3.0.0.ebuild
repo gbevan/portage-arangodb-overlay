@@ -63,7 +63,7 @@ src_install() {
 
   newinitd "${FILESDIR}"/arangodb.initd arangodb
 
-  fowners arangodb:arangodb /var/lib/arangodb /var/lib/arangodb-apps /var/log/arangodb
+  #fowners arangodb:arangodb /var/lib/arangodb /var/lib/arangodb-apps /var/log/arangodb
 
   systemd_dounit "${FILESDIR}"/arangodb.service
 }

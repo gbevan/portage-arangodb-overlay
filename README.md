@@ -26,6 +26,11 @@ to start (systemd):
 Upgrading
 ---------
 
+If upgrading from v2.* to v3.* - read the ArangoDB docs.  The database format has changed to use VelocityPack, and is
+not compatible with the 2.* version database.  See:
+
+https://docs.arangodb.com/3.0/Manual/Administration/Upgrading/Upgrading30.html
+
     layman -s gbevan-arangodb
     emerge -v -u arangodb
 
