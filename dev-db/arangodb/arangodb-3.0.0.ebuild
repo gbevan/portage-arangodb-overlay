@@ -46,7 +46,8 @@ src_configure() {
   #econf --localstatedir="${EPREFIX}"/var --enable-all-in-one-v8 --enable-all-in-one-libev --enable-all-in-one-icu || die "configure failed"
 
   local mycmakeargs=(
-    -D USE_BOOST_SYSTEM_LIBS=on
+    -DLOCALSTATEDIR=/var
+    -DUSE_BOOST_SYSTEM_LIBS=on
   )
   cmake-utils_src_configure
 }
