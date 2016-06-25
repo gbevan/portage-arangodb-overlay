@@ -53,6 +53,6 @@ Developer Notes:
 
 * When releasing new ebuild, run:
 
-        ebuild arangodb-2.8.x.ebuild manifest
+        ebuild arangodb-3.x.x.ebuild manifest
 
   for your new ebuild version, then commit/push.
