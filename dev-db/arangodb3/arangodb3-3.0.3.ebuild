@@ -13,6 +13,7 @@ HOMEPAGE="http://www.arangodb.org/"
 
 GITHUB_USER="arangodb"
 GITHUB_TAG="v${PV}"
+PN=arangodb
 
 SRC_URI="https://github.com/${GITHUB_USER}/${PN}/archive/${GITHUB_TAG}.tar.gz -> ${P}.tar.gz"
 
@@ -27,27 +28,30 @@ DEPEND=">=sys-libs/readline-6.2_p1
     ${PYTHON_DEPEND}"
 RDEPEND="${DEPEND}"
 
-#BUILD_DIR="${WORKDIR}/arangodb/build"
-
 pkg_setup() {
   python-any-r1_pkg_setup
-  ebegin "Ensuring arangodb user and group exist"
-  enewgroup arangodb
-  enewuser arangodb -1 -1 -1 arangodb
+  ebegin "Ensuring arangodb3 user and group exist"
+  enewgroup arangodb3
+  enewuser arangodb3 -1 -1 -1 arangodb3
   eend $?
 }
 
 src_prepare() {
-    #epatch here
     cmake-utils_src_prepare
 }
 
 src_configure() {
-  #econf --localstatedir="${EPREFIX}"/var --enable-all-in-one-v8 --enable-all-in-one-libev --enable-all-in-one-icu || die "configure failed"
 
   local mycmakeargs=(
-    -D LOCALSTATEDIR=/var
-    -D USE_BOOST_SYSTEM_LIBS=on
+    -DVERBOSE=On
+    -DUSE_OPTIMIZE_FOR_ARCHITECTURE=Off
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    #-DCMAKE_C_FLAGS="$(CFLAGS)"
+    #-DCMAKE_CXX_FLAGS="$(CXXFLAGS)"
+    -DETCDIR=/etc
+    -DVARDIR=/var
+    -DCMAKE_INSTALL_PREFIX:PATH=/usr
+    -DCMAKE_SKIP_RPATH:BOOL=ON
   )
   cmake-utils_src_configure
 }
@@ -55,7 +59,7 @@ src_configure() {
 src_install() {
   cmake-utils_src_install
 
-  newinitd "${FILESDIR}"/arangodb.initd arangodb
+  newinitd "${FILESDIR}"/arangodb3.initd arangodb
 
-  systemd_dounit "${FILESDIR}"/arangodb.service
+  systemd_dounit "${FILESDIR}"/arangodb3.service
 }
