@@ -24,7 +24,6 @@ IUSE=""
 
 DEPEND=">=sys-libs/readline-6.2_p1
     >=dev-libs/openssl-1.0.1g
-    >=dev-lang/go-1.2
     ${PYTHON_DEPEND}"
 RDEPEND="${DEPEND}"
 
