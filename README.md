@@ -26,7 +26,7 @@ to start (systemd):
 Upgrading v2 -> v3
 ---------
 
-The ebuild for v3 is not yet working...
+The ebuild for v3 now working, but read the following carefully:
 
 __VERY IMPORTANT: If upgrading from v2.* to v3.* - read the ArangoDB docs.  The database format has changed to use VelocityPack, and is not compatible with the 2.* version database.  See: https://docs.arangodb.com/3.0/Manual/Administration/Upgrading/Upgrading30.html__
 
