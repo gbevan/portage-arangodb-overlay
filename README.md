@@ -28,7 +28,7 @@ Upgrading v2 -> v3
 
 The ebuild for v3 now working, but read the following carefully:
 
-__VERY IMPORTANT: If upgrading from v2.* to v3.* - read the ArangoDB docs.  The database format has changed to use VelocityPack, and is not compatible with the 2.* version database.  See: https://docs.arangodb.com/3.0/Manual/Administration/Upgrading/Upgrading30.html__
+__VERY IMPORTANT: If upgrading from v2.\* to v3.\* - read the ArangoDB docs.  The database format has changed to use VelocityPack, and is not compatible with the 2.* version database.  See: https://docs.arangodb.com/3.0/Manual/Administration/Upgrading/Upgrading30.html__
 
 (Assuming you have read and are following the above migration instructions...)
 
@@ -87,6 +87,6 @@ Developer Notes:
 
 * When releasing new ebuild, run:
 
-        ebuild arangodb-3.x.x.ebuild manifest
+        ebuild arangodb3-3.x.x.ebuild manifest
 
   for your new ebuild version, then commit/push.
