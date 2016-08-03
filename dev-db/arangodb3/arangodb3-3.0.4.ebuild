@@ -37,6 +37,9 @@ pkg_setup() {
 
 src_prepare() {
     cmake-utils_src_prepare
+
+    sed -i 's?@PKGDATADIR@?/usr/share/arangodb3?' etc/arangodb3/arangod.conf.in || die 'sed arangod.conf failed'
+    sed -i 's?@PKGDATADIR@?/usr/share/arangodb3?' etc/arangodb3/arangosh.conf.in || die 'sed arangosh.conf failed'
 }
 
 src_configure() {
@@ -51,7 +54,6 @@ src_configure() {
     -DVARDIR=/var
     -DCMAKE_INSTALL_PREFIX:PATH=/usr
     -DCMAKE_SKIP_RPATH:BOOL=ON
-    -DPKGDATADIR=/usr/share/arangodb3
   )
   cmake-utils_src_configure
 }
