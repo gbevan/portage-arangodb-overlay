@@ -51,6 +51,7 @@ src_configure() {
     -DVARDIR=/var
     -DCMAKE_INSTALL_PREFIX:PATH=/usr
     -DCMAKE_SKIP_RPATH:BOOL=ON
+    -DPKGDATADIR=/usr/share/arangodb3
   )
   cmake-utils_src_configure
 }
