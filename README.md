@@ -1,8 +1,6 @@
-portage-arangodb-overlay
-========================
+# portage-arangodb-overlay
 
-Gentoo Portage overlay for ArangoDB
------------------------------------
+## Gentoo Portage overlay for ArangoDB (v3)
 
 [ArangoDB - the multi-model NoSQL database](https://www.arangodb.com/).
 
@@ -23,8 +21,29 @@ to start (systemd):
 
 (pre-systemd init scripts are also provided - let me know if you have any issues/fixes)
 
-Upgrading v2 -> v3
----------
+## Upgrading
+
+    layman -s gbevan-arangodb
+    emerge -v -u arangodb3
+
+Ensure all active connections, from applications and arangosh etc, are shutdown/closed before restarting:
+
+    systemctl daemon-reload
+    systemctl restart arangodb3
+
+Check the logs:
+
+    journalctl -b -u arangodb3
+
+If you get message like:
+
+    FATAL Database 'partout' needs upgrade. Please start the server with the --upgrade option
+
+then:
+
+    arangod --uid arangodb --gid arangodb --upgrade
+
+## Upgrading from v2 to v3
 
 The ebuild for v3 now working, but read the following carefully:
 
@@ -57,33 +76,7 @@ edit ```/etc/arangodb3/arangod.conf```
 repeat for ```/etc/arangodb3/arangosh.conf```
 
 
-Upgrading (v2 instructions for now)
----------
-
-    layman -s gbevan-arangodb
-    emerge -v -u arangodb
-
-Ensure all active connections, from applications and arangosh etc, are shutdown/closed before restarting:
-
-    systemctl daemon-reload
-    systemctl restart arangodb
-
-Check the logs:
-
-    journalctl -b -u arangodb
-
-If you get message like:
-
-    FATAL Database 'partout' needs upgrade. Please start the server with the --upgrade option
-
-then:
-
-    arangod --uid arangodb --gid arangodb --upgrade
-    (there may be an upgrade option via systemctl... maybe...)
-
-
-Developer Notes:
-----------------
+## Developer Notes:
 
 * When releasing new ebuild, run:
 
