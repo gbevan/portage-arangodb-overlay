@@ -14,12 +14,12 @@ Gentoo Portage overlay for ArangoDB
 run:
 
     layman -f -a gbevan-arangodb
-    emerge -v --ask arangodb
+    emerge -v --ask arangodb3
 
 to start (systemd):
 
-    systemctl enable arangodb
-    systemctl start arangodb
+    systemctl enable arangodb3
+    systemctl start arangodb3
 
 (pre-systemd init scripts are also provided - let me know if you have any issues/fixes)
 
