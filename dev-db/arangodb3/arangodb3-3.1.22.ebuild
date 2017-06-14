@@ -19,11 +19,11 @@ SRC_URI="https://github.com/${GITHUB_USER}/${PN}/archive/${GITHUB_TAG}.tar.gz ->
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE=""
 
 DEPEND=">=sys-libs/readline-6.2_p1
-    >=dev-libs/openssl-1.0.1g
+    >=dev-libs/openssl-1.0.1g[-bindist]
     ${PYTHON_DEPEND}"
 RDEPEND="${DEPEND}"
 
