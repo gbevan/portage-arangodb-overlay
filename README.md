@@ -43,6 +43,30 @@ then:
 
     arangod --uid arangodb --gid arangodb --upgrade
 
+## Upgrading from v3.1 to v3.2
+
+If you get error in `/var/log/arangodb3/arangod.log`:
+
+    2017-08-02T20:20:42Z [17223] ERROR In database '_system': Database directory version (30126) is lower than current version (30200).
+    2017-08-02T20:20:42Z [17223] ERROR In database '_system': ----------------------------------------------------------------------
+    2017-08-02T20:20:42Z [17223] ERROR In database '_system': It seems like you have upgraded the ArangoDB binary.
+    2017-08-02T20:20:42Z [17223] ERROR In database '_system': If this is what you wanted to do, please restart with the
+    2017-08-02T20:20:42Z [17223] ERROR In database '_system':   --database.auto-upgrade true
+    2017-08-02T20:20:42Z [17223] ERROR In database '_system': option to upgrade the data in the database directory.
+    2017-08-02T20:20:42Z [17223] ERROR In database '_system': Normally you can use the control script to upgrade your database
+    2017-08-02T20:20:42Z [17223] ERROR In database '_system':   /etc/init.d/arangodb stop
+    2017-08-02T20:20:42Z [17223] ERROR In database '_system':   /etc/init.d/arangodb upgrade
+    2017-08-02T20:20:42Z [17223] ERROR In database '_system':   /etc/init.d/arangodb start
+    2017-08-02T20:20:42Z [17223] ERROR In database '_system': ----------------------------------------------------------------------
+    2017-08-02T20:20:42Z [17223] FATAL Database '_system' needs upgrade. Please start the server with the --database.auto-upgrade option
+    2017-08-02T20:20:42Z [17223] FATAL Database '_system' upgrade failed. Please inspect the logs from the upgrade procedure
+
+You will have to upgrade the database using:
+
+    /usr/sbin/arangod --pid-file /var/run/arangod3/arangod.pid --server.uid arangodb3 --database.auto-upgrade true
+
+And then try restarting again.
+
 ## Upgrading from v2 to v3
 
 The ebuild for v3 now working, but read the following carefully:
